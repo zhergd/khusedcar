@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>科汇二手车中介管理系统</title>
+		<link rel="stylesheet" href=" css/common.css" />
+		<link rel="stylesheet" href=" css/web.css" />
+		<link rel="stylesheet" href=" css/fixed-table.css" />
+		<script src=" js/jquery-1.9.1.min.js"></script>
+		<script src=" js/fixed-table.js"></script>
+        <script src="js/findUser.js"></script>
+
+        <script>
+			$(function() {
+
+				var windowH = $(window).height();
+				var tableH = $('.fixed-table_body-wraper');
+				tableH.height(windowH - 287);
+
+				var tableW = $('.table_wrapper').width();
+				$('.fixed-table_header,.fixed-table_body').width(tableW);
+
+				var windowW = $(window).width();
+				// $('.right_area').width(windowW-170);
+				// var windowH=$(window).height();
+				$('.left_area,.right_area').height(windowH);
+
+				$('.left_area li').click(function() {
+					$(this).addClass('cur').siblings().removeClass('cur');
+				});
+				$('.select_pages').click(function() {
+					$(this).find('.open_page').toggle();
+				});
+				$('.select_box').click(function() {
+					$(this).find('.open_cons').toggle();
+				});
+				$('.add_puponp').click(function() {
+					$('.popup_bg,.popup_content').show();
+				});
+				$('.popup_content .close_icon').click(function() {
+					$('.popup_bg,.popup_content').hide();
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="left_area">
+			<h1><img src=" img/logo.png" alt=""></h1>
+			<div class="user_info">
+				<div class="user_images">
+					<img src=" img/user.png" alt="">
+				</div>
+				<p id="nameH">
+				</p>
+			</div>
+			<ul>
+				<li>
+					<a href="index.html"><i class="icons home_icon"></i>工作行程</a>
+				</li>
+				<li>
+					<a href="car.html"><i class="icons user_icon"></i>车库中心</a>
+				</li>
+				<li>
+					<a href="evaluation.html"><i class="icons yg_icon"></i>估价中心</a>
+				</li>
+				<li class="cur">
+					<a href="javascript:;"><i class="icons zz_icon"></i>保险业务</a>
+				</li>
+				<li>
+					<a href="tmaintain.html"><i class="icons sh_icon"></i>保养业务</a>
+				</li>
+				<li>
+					<a href="user.html"><i class="icons xg_icon"></i>个人信息</a>
+				</li>
+                <li>
+                    <a href="javascript:;" id="written"><i class="icons xg_icon"></i>注销</a>
+                </li>
+			</ul>
+		</div>
+		<div class="innerPage tag_innerPage">
+			<div class="tag_content">
+				<a href="tinsurance.html" class="cur">保险业务</a>
+			</div>
+			<div class="function_bar clearfix">
+				<div class="search_box">
+					<div class="cons"><i class="icons search_icon"></i><input class="input_text" id="ttt" placeholder="请输入险种名称" /></div>
+				</div>
+				<div class="select_box">
+					<a href="javascript:;" id="find" class="box"><i class="icons right_icon"></i>搜索</a>
+				</div>
+			</div>
+			<div class="table_wrapper">
+				<div class="fixed-table-box row-col-fixed">
+					<!-- 表头 start -->
+					<div class="fixed-table_header-wraper">
+						<table class="fixed-table_header" cellspacing="0" cellpadding="0" border="0" width="100%">
+							<thead>
+								<tr>
+									<!--                                <th width="5%" data-fixed="true"><div class="table-cell"><input type="checkbox" /></div></th>
+-->
+									<th width="10%">
+										<div class="table-cell">保险名称</div>
+									</th>
+									<th width="60%">
+										<div class="table-cell">描述</div>
+									</th>
+									<th width="10%">
+										<div class="table-cell">价钱</div>
+									</th>
+									<th width="10%">
+										<div class="table-cell">电话</div>
+									</th>
+                                    <th width="10%">
+                                        <div class="table-cell">联系人</div>
+                                    </th>
+
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<!-- 表头 end -->
+					<!-- 表格内容 start -->
+					<div class="fixed-table_body-wraper">
+						<table class="fixed-table_body" cellspacing="0" cellpadding="0" border="0" width="100%"  id="TInsurance">
+							<tbody>
+								<tr>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- 表格内容 end -->
+
+				</div>
+				<!--分页-->
+				<div class="page_cons">
+					<div class="cons">
+						<ul>
+							<li>
+								共400条
+								<div class="select_pages">
+									<a href="javascript:;">100条/页<i class="icons down_icon"></i></a>
+									<div class="open_page">
+										<a href="javascript:;">200条/条</a>
+										<a href="javascript:;">300条/条</a>
+										<a href="javascript:;">400条/条</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<a href="javascript:;"><i class="icons left_icon"></i></a>
+									<a href="javascript:;" class="cur a1">1</a>
+									<a href="javascript:;" class="a1">2</a>
+									<a href="javascript:;" class="a1">3</a>
+									<a href="javascript:;" class="a1">4</a>
+									<a href="javascript:;"><i class="icons right_icon"></i></a>
+								</div>
+							</li>
+							<li>
+								<div class="go">
+									前往<input type="text" value="4">页
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--弹窗-->
+		<script>
+			//初始化FixedTable
+			$(".fixed-table-box").fixedTable();
+		</script>
+	</body>
+    <!--查找全部保险js-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajax({
+                url: '/khusedcar/admin/findTInsurance',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    //方法中传入的参数data为后台获取的数据
+                    for (i in data.data) //data.data指的是数组，数组里是8个对象，i为数组的索引
+                    {
+
+                        var tr;
+                        tr = '<td width="10%">' + '<div class="table-cell">' + data.data[i].name + '</td>' + '</div>'
+                            + '<td width="60%">' + '<div class="table-cell">' + data.data[i].descr + '</td>' + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].price + '元/年'+ '</td>'  + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].phone + '</td>' + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].agent + '</td>' + '</div>'
+                        $("#TInsurance").append('<tr>' + tr + '</tr>');
+                    }
+                }
+            })
+        })
+    </script>
+
+    <!--查找保险项目-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#find").click(function(){
+                $("#TInsurance").empty();
+
+
+            var name = $('#ttt').val();
+
+            $.ajax({
+                url: '/khusedcar/admin/getTInsurance',
+                type: 'GET',
+                data:{
+                    name:name
+                },
+                dataType: 'json',
+                success: function (data) {
+                    //方法中传入的参数data为后台获取的数据
+                    for (i in data.data) //data.data指的是数组，数组里是8个对象，i为数组的索引
+                    {
+
+                        var tr;
+                        tr = '<td width="10%">' + '<div class="table-cell">' + data.data[i].name + '</td>' + '</div>'
+                            + '<td width="60%">' + '<div class="table-cell">' + data.data[i].descr + '</td>' + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].price + '元/年'+ '</td>'  + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].phone + '</td>' + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].agent + '</td>' + '</div>'
+                        $("#TInsurance").append('<tr>' + tr + '</tr>');
+                    }
+                    }
+
+            });
+        });
+        });
+    </script>
+
+
+    <!--注销js-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#written').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    data: null,
+                    dataType: 'json',
+                    url: '/khusedcar/user/written',
+                    success: function (result) {
+                        if (result.code == '0000') {
+                            alert("注销成功！");
+                            window.location.href = "login.html";
+                        } else if (result.code != '0000') {
+                            alert("注销失败");
+                        }
+                    },
+                    error: function (result) {
+                        alert("操作失败");
+                    }
+                });
+            });
+        });
+
+
+    </script>
+
+
+</html>

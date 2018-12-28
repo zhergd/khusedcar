@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.khusedcar.car.mapper.TCarMapper">
+
+    <select id="findAllCar" resultType="com.khusedcar.car.entities.TCar">
+        select *
+        from t_car
+        where isfinish = 0
+        AND   status = 0
+        AND   state = 0
+    </select>
+
+    <select id="findCar" resultType="com.khusedcar.car.entities.TCar">
+        select * from t_car
+        where isfinish = 0
+        AND status = 0
+        AND state = 0
+        AND name like CONCAT(CONCAT('%',#{name},'%'))
+    </select>
+
+    <select id="findCarById" resultType="com.khusedcar.car.entities.TCar">
+        select * from t_car
+        where isfinish = 0
+        AND status = 0
+        and state = 0
+        and salesman_name = #{salesmanName}
+        ORDER BY create_time
+    </select>
+
+    <select id="findCarBy" resultType="com.khusedcar.car.entities.TCar">
+        select * from t_car
+        <where>
+            <if test="brand != null and brand != ''">brand = #{brand}</if>
+            <if test="price != null and price != ''">AND price = #{price}</if>
+            <if test="carAge != null and carAge != ''">AND carAge = #{carAge}</if>
+            <if test="mileage != null and mileage != ''">AND mileage = #{mileage}</if>
+            <if test="colour != null and colour != ''">AND colour = #{colour}</if>
+            <if test="fuelType != null and fuelType != ''">AND fuel_type = #{fuelType}</if>
+            AND isfinish = 0
+            AND status = 0
+            AND state = 0
+        </where>
+    </select>
+
+    <select id="carRecord" resultType="com.khusedcar.utils.reqdto.car.carRecordDTO">
+        select * from t_car
+        where status = 1
+        or status = 2
+        ORDER BY updata_time
+    </select>
+
+    <update id="recoveryCar">
+        update t_car set status = 0
+        where id = #{id}
+    </update>
+
+    <select id="findCarSalesRecords" resultType="com.khusedcar.utils.reqdto.car.carRecordDTO">
+        select * from t_car
+        where isfinish = 1
+        order BY updata_time
+    </select>
+
+
+    <insert id="addCar">
+        insert into t_car (id,name,company_name,salesman_name,salesman_phone,owner,owner_phone,address,car_num,brand,price,car_age,mileage,colour,fuel_type,sale_type,intention,remarks,img)
+        values (#{id},#{name},#{companyName},#{salesmanName},#{salesmanPhone},#{owner},#{ownerPhone},#{address},#{carNum},#{brand},#{price},#{carAge},#{mileage},#{colour},#{fuelType},#{saleType},#{intention},#{remarks},#{img})
+    </insert>
+
+    <update id="addCarImg">
+        update t_car set img = #{img}
+        where id = #{id}
+    </update>
+
+    <update id="finishCar">
+        update t_car set isfinish = 1
+        where id = #{id}
+    </update>
+
+    <update id="deleteCar">
+        update t_car set status = 1
+        where id = #{id}
+    </update>
+
+    <update id="userDeleteCar">
+        update t_car set status = 1
+        where salesman_name = #{salesmanName}
+    </update>
+
+    <update id="lockingCar">
+        update t_car set status = 2
+        where id = #{id}
+    </update>
+
+</mapper>

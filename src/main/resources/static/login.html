@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录</title>
+    <link rel="stylesheet" href=" css/common.css"/>
+    <link rel="stylesheet" href=" css/web.css"/>
+    <script type="text/javascript" src=" js/jquery-1.7.2.min.js"></script>
+    <script>
+        $(function () {
+
+            var windowH = $(window).height();
+            $('.user_wrapper_lr').height(windowH);
+        });
+    </script>
+</head>
+<body>
+<div class="user_wrapper_lr">
+    <h1><img src="" alt=""></h1>
+    <div class="user_con">
+        <div class="title">登录</div>
+        <ul>
+            <li>
+                <div class="input_box">
+                    <i class="icons user_icon"></i>
+                    <input type="text" id="userName" placeholder="请输入您的用户名">
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <i class="icons pass_icon"></i>
+                    <input type="password" id="password" placeholder="请输入您的密码">
+                </div>
+            </li>
+            <li>
+                <a class="btn" id="login" href="#">登录</a>
+            </li>
+        </ul>
+        <div class="link_box">
+            <a href="password.html">忘记密码？</a>
+            <span>如没有帐号，请先<a href="register.html">注册</a></span>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#login').click(function () {
+
+            var userName = $('#userName').val();
+            var password = $('#password').val();
+
+            $.ajax({
+
+                type: 'POST',
+                data: {username: userName, password: password},
+                dataType: 'json',
+                url: '/khusedcar/user/login',
+                success: function (result) {
+                    if (result.code == '0000') {
+                        window.location.href = "index.html";
+                    } else if (result.code != '0000') {
+                        alert("账号或密码错误");
+                    }
+
+                },
+                error: function (result) {
+                    alert("账号或密码错误");
+                }
+
+            });
+
+
+        });
+
+    });
+</script>
+
+
+</html>

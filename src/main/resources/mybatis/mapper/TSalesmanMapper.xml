@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.khusedcar.user.mapper.TSalesmanMapper" >
+
+    <select id="login" resultType="com.khusedcar.user.entities.TSalesman">
+        select * FROM t_salesman
+        where username = #{username}
+        and password = #{password}
+        and status = 0
+    </select>
+
+    <insert id="addUser">
+        insert into t_salesman(username,password,name,phone,company_name,email,invitation_code,problem,answer)
+        select username,password,name,phone,company_name,email,invitation_code,problem,answer from (select #{username} as username,
+        #{password} as password,#{name} as name, #{phone} as phone,#{companyName} as company_name,#{email} as email,
+        #{invitationCode} as invitation_code, #{problem} as problem, #{answer} as answer)as  s
+        where exists(select * from t_key where invitation_code = #{invitationCode} and status = 0)
+    </insert>
+
+    <select id="findUser" resultType="com.khusedcar.user.entities.TSalesman">
+        select *
+        from t_salesman
+        WHERE id = #{id};
+    </select>
+
+    <select id="findUserByName" resultType="com.khusedcar.user.entities.TSalesman">
+        select *
+        from t_salesman
+        WHERE username = #{username};
+    </select>
+
+    <select id="findUserBy" resultType="com.khusedcar.user.entities.TSalesman">
+        select * from t_salesman
+        <where>
+        company_name = #{companyName}
+         <if test="name!=null and name!=''">AND t_salesman.name like CONCAT(CONCAT('%',#{name},'%'))</if>
+        AND status = 0
+        </where>
+    </select>
+
+    <update id="upUser">
+        update t_salesman set name = #{name},phone = #{phone},email = #{email},company_name = #{companyName}
+        WHERE id = #{id}
+    </update>
+
+    <update id="upPassword">
+        update t_salesman set password = #{password}
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteUser">
+        update t_salesman set status = 1
+        where id = #{id}
+    </update>
+    
+    <update id="retrievePassword">
+        update t_salesman set password = #{password}
+        where username = #{username} and problem = #{problem} and answer = #{answer}
+    </update>
+
+    <insert id="newKey">
+        insert into t_key(invitation_code)
+        values (#{invitationCode})
+    </insert>
+
+    <select id="findKey" resultType="com.khusedcar.user.entities.Key">
+        select * from t_key
+        where status = 0;
+    </select>
+
+    <update id="upKey">
+        update t_key set status = 1
+        where invitation_code = #{invitationCode}
+    </update>
+
+    <select id="adminLogin" resultType="com.khusedcar.user.entities.TSuperAdmin">
+        select * FROM t_superadmin where username = #{username} and password = #{password}
+    </select>
+
+    <update id="upSuperAdmin">
+        update t_superadmin set password = #{password}
+        where username = #{username}
+    </update>
+
+</mapper>
