@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="khusedcar:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="khusedcar-2.0.6.RELEASE.war">
+      <element id="artifact" artifact-name="khusedcar:war exploded" />
+    </root>
+  </artifact>
+</component>

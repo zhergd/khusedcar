@@ -1,0 +1,194 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.left {
+	background: #313541;
+	width: 20%;
+	float: left;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+}
+
+.top {
+	width: 80%;
+	float: right;
+	height: 100px;
+	line-height: 100px;
+	border-bottom: 1px solid #b0cdff;
+}
+
+.content {
+	float: right;
+	width: 80%;
+	text-align: center;
+	font-size: 40px;
+	margin-top: 0px;
+}
+
+.leftTiyle {
+	font-size: 25px;
+	padding-left: 30px;
+	font-weight: 600;
+	color: #545454;
+	float: left;
+}
+
+.thisUser {
+	float: right;
+	font-size: 15px;
+	margin-right: 30px;
+	line-height: 15px;
+	color:#fff
+}
+
+.bigTitle {
+	background: #3d598a;
+	color: #fff;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	font-size: 24px;
+	font-family: -webkit-body;
+}
+
+.button {
+    min-height: 1.5em;
+    display: inline-block;
+    padding: 12px 36px;
+    margin: 40px 5px 5px 0px;
+    cursor: pointer;
+    opacity: 0.9;
+    
+    color: #FFF;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-shadow: rgba(0,0,0,0.9) 0px 1px 2px;
+    
+    background: #434343;
+    border: 1px solid #242424;
+   
+    -webkit-border-radius: 4px;
+     -khtml-border-radius: 4px;
+       -moz-border-radius: 4px;
+         -o-border-radius: 4px;
+            border-radius: 4px;
+    -webkit-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+     -khtml-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+       -moz-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+         -o-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+            box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+    -webkit-transition: all 0.1s linear;
+     -khtml-transition: all 0.1s linear;
+       -moz-transition: all 0.1s linear;
+         -o-transition: all 0.1s linear;
+            transition: all 0.1s linear;
+}
+.button:hover {
+    -webkit-box-shadow: rgba(0,0,0,0.5) 0px 2px 5px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+     -khtml-box-shadow: rgba(0,0,0,0.5) 0px 2px 5px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+       -moz-box-shadow: rgba(0,0,0,0.5) 0px 2px 5px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+         -o-box-shadow: rgba(0,0,0,0.5) 0px 2px 5px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+            box-shadow: rgba(0,0,0,0.5) 0px 2px 5px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+}
+.button:active {
+    -webkit-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px,inset rgba(255,255,255,0) 0px 1px 0px, inset rgba(0,0,0,0.5) 0px 0px 5px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+     -khtml-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px,inset rgba(255,255,255,0) 0px 1px 0px, inset rgba(0,0,0,0.5) 0px 0px 5px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+       -moz-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0) 0px 1px 0px, inset rgba(0,0,0,0.5) 0px 0px 5px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+         -o-box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0) 0px 1px 0px, inset rgba(0,0,0,0.5) 0px 0px 5px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+            box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0) 0px 1px 0px, inset rgba(0,0,0,0.5) 0px 0px 5px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+}
+
+
+
+.shine {
+    display: block;
+    position: relative;
+    background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(50%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
+    background: linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+    padding: 0px 12px;
+    top: -12px;
+    left: -24px;
+    height: 1px;
+    -webkit-box-shadow: rgba(255,255,255,0.2) 0px 1px 5px;
+     -khtml-box-shadow: rgba(255,255,255,0.2) 0px 1px 5px;
+       -moz-box-shadow: rgba(255,255,255,0.2) 0px 1px 5px;
+         -o-box-shadow: rgba(255,255,255,0.2) 0px 1px 5px;
+            box-shadow: rgba(255,255,255,0.2) 0px 1px 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+     -khtml-transition: all 0.3s ease-in-out;
+       -moz-transition: all 0.3s ease-in-out;
+         -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+}
+.button:hover .shine {left: 24px;}
+.button:active .shine {opacity: 0;}
+
+.button.gray {background: #555;}
+.button.blue {background: #3a617e;}
+.button.green {background: #477343;}
+.button.red {background: #723131;}
+.button.purple {background: #4b3f5e;}
+.button.orange {background: #624529;}
+
+#customers
+  {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  width:80%;																		
+  border-collapse:collapse;
+  }
+
+#customers td, #customers th 
+  {
+  text-align: center;
+  font-size:15px;
+  border:1px solid #98bf21;
+  padding:3px 7px 2px 7px;
+  }
+
+#customers th 
+  {
+  font-size:15px;
+  text-align:center;
+  padding-top:5px;
+  padding-bottom:4px;
+  background-color:#3d598a;
+  color:#ffffff;
+  }
+
+#customers tr.alt td 
+  {
+  color:#000000;
+  background-color:#EAF2D3;
+  }
+  
+  
+
+.lines .active {
+	background: #272a34;
+	color: #fff;
+}
+.lines img{
+    width: 23px;
+    vertical-align: middle;
+    margin-bottom: 4px;
+    margin-right: 9px;
+}
+.lines div {
+	height: 70px;
+	line-height: 70px;
+	padding-left: 50px;
+	color: #707783;
+}
+
+.lines div:hover {
+	cursor: pointer;
+	color: #FFFFFF;
+}

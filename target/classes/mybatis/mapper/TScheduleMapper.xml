@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.khusedcar.schedule.mapper.TScheduleMapper" >
+    <select id="findSchedule" resultType="com.khusedcar.schedule.entities.TSchedule">
+        select * from t_schedule where salesman_id = #{salesmanId} and status = 0
+    </select>
+
+    <insert id="addSchedule">
+        insert into t_schedule(id,schedule_des, schedule_date_begin, schedule_date_end,  salesman_id)
+        values (#{id},#{scheduleDes},#{scheduleDateBegin},#{scheduleDateEnd},#{salesmanId})
+    </insert>
+
+    <update id="finishSchedule">
+        update t_schedule set isFinish = 1
+        where id = #{id}
+    </update>
+
+    <update id="deleteSchedule">
+        update t_schedule set status = 1
+        where id = #{id}
+    </update>
+
+</mapper>

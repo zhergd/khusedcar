@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: khusedcar
+Implementation-Version: 2.0.6.RELEASE
+Built-By: zuhao
+Implementation-Vendor-Id: com.khusedcar
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_171
+Main-Class: ${start-class}
+

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>操作记录</title>
+    <link rel="stylesheet" href=" css/common.css" />
+    <link rel="stylesheet" href=" css/web.css" />
+    <link rel="stylesheet" href=" css/fixed-table.css" />
+    <script src=" js/jquery-1.9.1.min.js"></script>
+    <script src=" js/fixed-table.js"></script>
+    <script>
+        $(function(){
+           
+            var windowH=$(window).height();
+            var tableH=$('.fixed-table_body-wraper');
+            tableH.height(windowH-287);
+
+            var tableW=$('.table_wrapper').width();
+            $('.fixed-table_header,.fixed-table_body').width(tableW);
+
+            var windowW=$(window).width();
+            // $('.right_area').width(windowW-170);
+            // var windowH=$(window).height();
+            $('.left_area,.right_area').height(windowH);
+
+            $('.left_area li').click(function(){
+                $(this).addClass('cur').siblings( ).removeClass('cur');
+            });
+            $('.select_pages').click(function(){
+                $(this).find('.open_page').toggle();
+            });
+            $('.select_box').click(function(){
+                $(this).find('.open_cons').toggle();
+            });
+            $('.add_puponp').click(function(){
+                $('.popup_bg,.popup_content').show();
+            });
+            $('.popup_content .close_icon').click(function(){
+                $('.popup_bg,.popup_content').hide();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="left_area">
+        <h1><img src="  img/logo.png" alt=""></h1>
+        <div class="user_info">
+            <div class="user_ img">
+                <img src="  img/user.png" alt="">
+            </div>
+            <p>超级管理员<a href="javascript:;"><i class="icons exit_icon"></i></a></p>
+        </div>
+        <ul>
+            <li><a href="adminIndex.html"><i class="icons home_icon"></i>邀请码管理</a></li>
+            <li><a href="adminCar.html"><i class="icons user_icon"></i>车辆管理</a></li>
+            <li><a href="adminInsurance.html"><i class="icons yg_icon"></i>保险业务管理</a></li>
+            <li><a href="adminMaintain.html"><i class="icons zz_icon"></i>保养业务管理</a></li>
+            <li  class="cur"><a href="adminUser.html"><i class="icons sh_icon"></i>账户管理</a></li>
+        </ul>
+    </div>
+    <div class="innerPage tag_innerPage">
+        <div class="tag_content">
+            
+                    <a href="adminUser.html">账户管理</a>
+               
+                    <a href="adminUserRecord.html" class="cur">操作记录</a>
+               
+        </div>
+        <div class="function_bar clearfix">
+            <div class="search_box">
+                <div class="cons"><i class="icons search_icon"></i><input class="input_text"  placeholder="搜索" /></div>
+            </div>
+            <div class="btns">
+                <a href="javascript:;" class="add_puponp">测试</a>
+            </div>
+        </div>
+        <div class="table_wrapper">
+            <div class="fixed-table-box row-col-fixed">
+                <!-- 表头 start -->
+                <div class="fixed-table_header-wraper">
+                    <table class="fixed-table_header" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th width="10%">
+                            </th>
+                            <th width="10%">
+                                <div class="table-cell">用户编号</div>
+                            </th>
+                            <th width="10%">
+                                <div class="table-cell">姓名</div>
+                            </th>
+                            <th width="15%">
+                                <div class="table-cell">账号</div>
+                            </th>
+                            <th width="15%">
+                                <div class="table-cell">封禁时间</div>
+                            </th>
+                            <th width="10%" data-fixed="true" data-direction="right">
+                                <div class="table-cell">操作</div>
+                            </th>
+                            <th width="30%">
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- 表头 end -->
+                <!-- 表格内容 start -->
+                <div class="fixed-table_body-wraper">
+                    <table class="fixed-table_body" cellspacing="0" cellpadding="0" border="0" width="100%" id="blockedUser">
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 表格内容 end -->
+
+            </div>
+            <!--分页-->
+            <div class="page_cons">
+                <div class="cons">
+                    <ul>
+                        <li>
+                            共400条
+                            <div class="select_pages">
+                                <a href="javascript:;">100条/页<i class="icons down_icon"></i></a>
+                                <div class="open_page">
+                                    <a href="javascript:;">200条/条</a>
+                                    <a href="javascript:;">300条/条</a>
+                                    <a href="javascript:;">400条/条</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box">
+                                <a href="javascript:;"><i class="icons left_icon"></i></a>
+                                <a href="javascript:;" class="cur a1">1</a>
+                                <a href="javascript:;" class="a1">2</a>
+                                <a href="javascript:;" class="a1">3</a>
+                                <a href="javascript:;" class="a1">4</a>
+                                <a href="javascript:;"><i class="icons right_icon"></i></a>
+                            </div>
+                        </li>
+                        <li>
+                           <div class="go">
+                                前往<input type="text" value="4">页
+                            </div>  
+                        </li>
+                    </ul>     
+                </div>
+            </div>
+        </div>     
+    </div>
+    <!--弹窗-->
+    <div class="popup_bg none"></div>
+    <div class="popup_content none">
+        <div class="popup_header">
+            <h3>新增岗位</h3>
+            <i class="icons close_icon"></i>
+        </div>
+        <div class="popup_cons">
+            <ul>
+                <li>
+                    <p>岗位名称</p>
+                    <div class="input_box"><input type="text" placeholder="请输入岗位名称"></div>
+                </li>
+                <li class="li2">
+                    <p>岗位说明</p>
+                    <div class="input_box">
+                        <textarea name="" placeholder="请输入岗位说明"></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="pupup_footer"><a href="javascript:;" class="btn">保存</a></div>
+    </div>
+    <script>
+        //初始化FixedTable
+        $(".fixed-table-box").fixedTable();
+    </script>
+</body>
+
+<!--查询被封禁账户-->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $.ajax({
+            url: '/khusedcar/admin/findBlockedUser',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                //方法中传入的参数data为后台获取的数据
+                for (i in data.data) //data.data指的是数组，数组里是8个对象，i为数组的索引
+                {
+
+                    var tr;
+                    tr = '<td width="10%">' + '<div class="table-cell">' +  '</td>' + '</div>'
+                        +'<td width="10%">' + '<div class="table-cell">' + data.data[i].id + '</td>' + '</div>'
+                        + '<td width="10%">' + '<div class="table-cell">' + data.data[i].name + '</td>' + '</div>'
+                        + '<td width="15%">' + '<div class="table-cell">' + data.data[i].username + '</td>' + '</div>'
+                        + '<td width="15%">' + '<div class="table-cell">' + data.data[i].updataTime + '</td>' + '</div>'
+                        + '<td width="10%">' + '<div class="table-cell">' + '<a href="#" class="lifted" dd= '+ data.data[i].id +' >' + '解封' + '</a>' + '</td>' + '</div>'
+                        + '<td width="30%">' + '<div class="table-cell">' +  '</td>' + '</div>'
+                    $("#blockedUser").append('<tr>' + tr + '</tr>');
+                }
+            }
+        })
+    })
+</script>
+
+<!--解封账户-->
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        $('tbody').on('click','.lifted',function () {
+            var id =  $(this).attr("dd");
+
+            $.ajax({
+                type: 'GET',
+                data: {id: id},
+                dataType: 'json',
+                url: '/khusedcar/admin/liftedUser',
+                success: function (result) {
+                    if (result.code == '0000') {
+                        alert("解封成功");
+                        window.location.href = "adminUserRecord.html";
+                    }
+                    else if (result.code != '0000') {
+                        alert("操作失败");
+                    }
+                },
+                error: function (result) {
+                    alert("发生错误");
+                }
+            })
+
+        });
+    });
+</script>

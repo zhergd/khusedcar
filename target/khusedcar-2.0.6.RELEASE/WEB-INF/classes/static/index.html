@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <link rel="stylesheet" href=" css/common.css"/>
+    <link rel="stylesheet" href=" css/web.css"/>
+    <link rel="stylesheet" href=" css/style.css">
+    <link rel="stylesheet" href=" css/fullcalendar.css">
+    <link rel="stylesheet" href=" css/fullcalendar.print.css" media='print'>
+    <script type="text/javascript" src=" js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src=" js/fullcalendar.min.js"></script>
+    <script type="text/javascript" src=" js/script.js"></script>
+    <script type="text/javascript" src=" js/written.js"></script>
+    <script type="text/javascript" src="js/findUser.js"></script>
+    <script>
+        $(function () {
+            $('.left_area li').click(function () {
+                $(this).addClass('cur').siblings().removeClass('cur');
+            });
+
+            var windowW = $(window).width();
+            $('.right_area').width(windowW - 170);
+            var windowH = $(window).height();
+            $('.left_area,.right_area,.calendar_wrapper .calendar_con,.reminding_con').height(windowH);
+        });
+    </script>
+    <script>
+        $(function () {
+
+            var windowH = $(window).height();
+            var tableH = $('.fixed-table_body-wraper');
+            tableH.height(windowH - 287);
+
+            var tableW = $('.table_wrapper').width();
+            $('.fixed-table_header,.fixed-table_body').width(tableW);
+
+            var windowW = $(window).width();
+            // $('.right_area').width(windowW-170);
+            // var windowH=$(window).height();
+            $('.left_area,.right_area').height(windowH);
+
+            $('.left_area li').click(function () {
+                $(this).addClass('cur').siblings().removeClass('cur');
+            });
+            $('.select_pages').click(function () {
+                $(this).find('.open_page').toggle();
+            });
+            $('.select_box').click(function () {
+                $(this).find('.open_cons').toggle();
+            });
+            $('.add_puponp').click(function () {
+                $('.popup_bg,.popup_content').show();
+            });
+            $('.popup_content .close_icon').click(function () {
+                $('.popup_bg,.popup_content').hide();
+            });
+        });
+    </script>
+
+
+</head>
+<body style="overflow-y: hidden;">
+<!--左边-->
+<div class="left_area">
+    <h1><img src=" img/logo.png" alt=""></h1>
+    <div class="user_info">
+        <div class="user_images">
+            <img src=" img/user.png" alt="">
+        </div>
+        <p id="nameH"></p>
+    </div>
+    <ul>
+        <li class="cur"><a href="index.html"><i class="icons home_icon"></i>工作行程</a></li>
+        <li><a href="car.html"><i class="icons user_icon"></i>车库中心</a></li>
+        <li><a href="evaluation.html"><i class="icons yg_icon"></i>估价中心</a></li>
+        <li><a href="tinsurance.html"><i class="icons zz_icon"></i>保险业务</a></li>
+        <li><a href="tmaintain.html"><i class="icons sh_icon"></i>保养业务</a></li>
+        <li><a href="user.html"><i class="icons xg_icon"></i>个人信息</a></li>
+        <li><a href="javascript:;" id="written"><i class="icons xg_icon"></i>注销</a></li>
+    </ul>
+</div>
+<!--右边-->
+<div class="innerPage indexPage">
+    <div class="calendar_wrapper">
+        <div class="container calendar_con">
+            <div class="content">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="box">
+                            <!-- <div class="box-head">
+                                <h3>Calendar</h3>
+                            </div> -->
+                            <div class="box-content box-nomargin">
+                                <div class="calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="addCons">
+                <a href="javascript:;" class="btn add_puponp">添加任务</a>
+            </div>
+        </div>
+        <div class="reminding_con">
+            <div class="content">
+                <h4><i class="icons tip_icon"></i>事务提醒</h4>
+                <ul id="schedule">
+                    <!--<li>-->
+                        <!--<em class="green"></em>-->
+                        <!--<div>走访客户</div>-->
+                        <!--<p>2018-06-20</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<em class="blue"></em>-->
+                        <!--<div>走访客户</div>-->
+                        <!--<p>2018-06-20</p>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--弹窗-->
+<div class="popup_bg none" id="windowAdd"></div>
+<div class="popup_content none" id="windowTwo">
+    <div class="popup_header">
+        <h3>添加事务备忘</h3>
+        <i class="icons close_icon"></i>
+    </div>
+    <div class="popup_cons">
+        <ul>
+            <li>
+                <p>事务名称</p>
+                <div class="input_box"><input type="text" placeholder="请输入事务名称" id="scheduleDes"></div>
+            </li>
+            <li>
+                <p>起始时间</p>
+                <div class="input_box"><input type="text" placeholder="2019-XX-XX" id="scheduleDateBegin"></div>
+            </li>
+            <li>
+                <p>结束时间</p>
+                <div class="input_box"><input type="text" placeholder="2019-XX-XX" id="scheduleDateEnd"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="pupup_footer">
+        <a href="javascript:;" class="btn" id="newSchedule">添加</a>
+    </div>
+</div>
+
+
+</body>
+
+<!--添加任务-->
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#newSchedule').click(function () {
+
+            var scheduleDes = $('#scheduleDes').val();
+            var scheduleDateBegin = $('#scheduleDateBegin').val();
+            var scheduleDateEnd = $('#scheduleDateEnd').val();
+            $.ajax({
+
+                type: 'POST',
+                data: {
+                    scheduleDes: scheduleDes, scheduleDateBegin: scheduleDateBegin, scheduleDateEnd: scheduleDateEnd
+                },
+                dataType: 'json',
+                url: '/khusedcar/schedule/addSchedule',
+                success: function (result) {
+                    if (result.code == '0000') {
+                        alert("添加成功！");
+                        $('#windowAdd').hide();
+                        $('#windowTwo').hide();
+                    } else if (result.code != '0000') {
+                        alert("填写错误,请检查后再提交");
+                    }
+                    window.location.href = "index.html";
+                },
+                error: function (result) {
+                    alert("您填写的信息有误,请检查后再提交");
+                }
+
+            });
+
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajax({
+            url: '/khusedcar/schedule/findSchedule',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                //方法中传入的参数data为后台获取的数据
+                for (i in data.data) //data.data指的是数组，数组里是8个对象，i为数组的索引
+                {
+
+                    var tr;
+                    tr = '<li>' + '<em class="green">'+'</em>' + '<div>'+ data.data[i].scheduleDes + '</div>'
+                        + '<p>' + data.data[i].scheduleDateBegin + '</p>'+ '</li>'
+                    $("#schedule").append(tr);
+                }
+            }
+        })
+    })
+</script>
+
+</html>
+

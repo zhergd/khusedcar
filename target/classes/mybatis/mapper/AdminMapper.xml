@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.khusedcar.administrators.mapper.AdminMapper">
+
+    <select id="findAllUser" resultType="com.khusedcar.user.entities.TSalesman">
+    select *
+    from t_salesman
+    where status = 0;
+    </select>
+
+    <select id="findUserBy" resultType="com.khusedcar.user.entities.TSalesman">
+        select *
+        from t_salesman
+        where status = 0
+        and name like CONCAT(CONCAT('%',#{name},'%'));
+    </select>
+
+    <update id="resetPassword">
+        update t_salesman set password = #{password}
+        where id = #{id}
+    </update>
+
+    <update id="blockedUser">
+        update t_salesman set status = 1
+        where id = #{id}
+    </update>
+
+    <select id="findBlockedUser" resultType="com.khusedcar.utils.reqdto.admin.UserRecordDTO">
+        select *
+        from t_salesman
+        where status = 1
+        order by updata_time;
+    </select>
+
+    <update id="liftedUser">
+        update t_salesman set status = 0
+        where id = #{id}
+    </update>
+
+
+</mapper>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册</title>
+    <link rel="stylesheet" href=" css/common.css"/>
+    <link rel="stylesheet" href=" css/web.css"/>
+    <script type="text/javascript" src=" js/jquery-1.7.2.min.js"></script>
+    <script>
+        $(function () {
+
+            var windowH = $(window).height();
+            $('.user_wrapper_lr').height(windowH);
+        });
+    </script>
+</head>
+<body>
+<div class="user_wrapper_lr register_wrapper">
+    <h1><img src="  img/logo2.png" alt=""></h1>
+    <div class="user_con password_con register_con">
+        <div class="user_pic">
+            <img src="  img/user2.png" alt="">
+        </div>
+        <div class="title">基本信息</div>
+        <ul>
+            <li>
+                <div class="input_box">
+                    <input type="text" id="username" placeholder="账号">
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <input type="password" id="password" placeholder="密码">
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <input type="text" id="name" placeholder="姓名">
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <input type="text" id="phone" placeholder="手机号码">
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <input type="text" id="email" placeholder="邮箱">
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <input type="text" id="companyName" placeholder="公司名称">
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <input type="text" id="invitationCode" placeholder="邀请码">
+                </div>
+            </li>
+            <!--<li>-->
+            <!--<div class="input_box input_box2">-->
+            <!--<input type="text" placeholder="验证码">-->
+            <!--</div>		-->
+            <!--<div class="input_box3">-->
+            <!--<a href="javascript:;" class="btn">发送验证码</a>-->
+            <!--</div>			-->
+            <!--</li>-->
+            <li>
+                <div class="input_box selext_box">
+                    <select name="" id="problem">
+                        <option value="请选择你的安全问题">请选择你的安全问题</option>
+                        <option value="请选择你的安全问题">你第一辆车的颜色是？</option>
+                        <option value="请选择你的安全问题">你最喜欢的电影是？</option>
+                        <option value="请选择你的安全问题">你最喜欢的音乐是？</option>
+                        <option value="请选择你的安全问题">你最喜欢的汽车品牌是？</option>
+                        <option value="请选择你的安全问题">你的爱好是？</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <div class="input_box">
+                    <input type="text" id="answer" placeholder="安全问题答案">
+                </div>
+            </li>
+            <li>
+                <a href="#" id="addUser" class="btn">完成注册</a>
+            </li>
+        </ul>
+        <div class="login_info">
+            如有帐号，请<a href="login.html">登录</a>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#addUser').click(function () {
+
+            var username = $('#username').val();
+            var password = $('#password').val();
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var companyName = $('#companyName').val();
+            var email = $('#email').val();
+            var invitationCode = $('#invitationCode').val();
+            var problem = $('#problem').val();
+            var answer = $('#answer').val();
+
+
+            $.ajax({
+
+                type: 'POST',
+                data: {
+                    username: username, password: password, name: name, phone: phone, companyName: companyName,
+                    email: email, invitationCode: invitationCode, problem: problem, answer: answer
+                },
+                dataType: 'json',
+                url: '/khusedcar/user/addUser',
+                success: function (result) {
+
+                    if (result.code == '0000') {
+                        alert("注册成功！");
+                        window.location.href = "login.html";
+                    } else if (result.code == "0002") {
+                        alert("账号已存在,请重新输入");
+                    } else if (result.code == "0026") {
+                        alert("您填写的邀请码无效");
+                    } else {
+                        alert("您填写的信息有误,请检查后再提交");
+                    }
+
+                },
+                error: function (result) {
+                    alert("您填写的信息有误,请检查后再提交");
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
+
+
+</html>

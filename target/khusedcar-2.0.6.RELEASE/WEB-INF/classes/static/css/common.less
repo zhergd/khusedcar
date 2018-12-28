@@ -1,0 +1,57 @@
+@mainColor:#258ffb;
+@fontColor:#676b6e;
+@linColor:#f3f6f9;
+body{
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	padding:0;
+	margin:0;
+	font-size: 13px;
+	background: #fcfbfc;
+	color: @fontColor;
+}
+.btn{
+	padding: 0 26px;
+	font-size: 13px;
+	height: 36px;
+	line-height: 36px;
+	display: inline-block;
+	color: #fff;
+	background: @mainColor;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(190,213,236,.4);
+}
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.icons{
+	background: url("../images/icons.png") no-repeat;
+	display: inline-block;
+}
+a{
+	cursor: pointer;
+	color: @fontColor;
+	text-decoration: none;
+}
+input{
+	outline: none;
+}
+.none{
+	display: none;
+}
+.clearfix:after {  content: "."; display: block; height: 0; clear: both; visibility: hidden;  }   
+.clearfix {display: inline-block;}  /* for IE/Mac */   
+::-webkit-scrollbar{position: absolute;right: 0;top: 0;width: 7px;height: 12px;background-color: #f9f9f9;}
+::-webkit-scrollbar-trace{position: absolute;right: 0;top: 0;width: 7px;height: 12px;border-radius:3.5px;background-color: rgba(0,0,0,0.06);}
+::-webkit-scrollbar-thumb{position: absolute;right: 0;top: 0;width: 7px;border-radius:3.5px;height: 12px;background-color: rgba(0,0,0,0.1);}
+::-webkit-scrollbar:hover{ background: #f1f1f1; width: 10px; }
+::-webkit-scrollbar-thumb:hover{ background-color: rgba(0,0,0,0.2); width: 12px; height: 20px;}
+.thCheckBox,.tdCheckBox,.tdCheckBox2{display: inline-block;position: relative;top:3px;width: 15px;height: 15px;margin: 0 auto;}
+.thCheckBox input[type="checkbox"],.tdCheckBox input[type="checkbox"],.tdCheckBox2 input[type="checkbox"]{cursor:pointer;z-index:200000;opacity: 0;width: 15px;height: 15px;border:1px solid red;z-index:10;position: absolute;top: 0px;left: 0;}
+.thCheckBox input[type="checkbox"]+label,.tdCheckBox input[type="checkbox"]+label,.tdCheckBox2 input[type="checkbox"]+label{display:inline-block;cursor:pointer;width: 12px; height: 12px;border: 1px solid #dddcd8;border-radius: 1px;margin:0 auto;position: absolute;top: 0px;left:0; border-radius: 3px;}
+.thCheckBox input[type="checkbox"]:checked+label,.tdCheckBox input[type="checkbox"]:checked+label,.tdCheckBox2 input[type="checkbox"]:checked+label{cursor:pointer;background: #258FFB url("../images/icons.png")  no-repeat -1px -47px;border-color: #258FFB;}
+
+
+
+

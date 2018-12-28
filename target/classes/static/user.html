@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>科汇二手车中介管理系统</title>
+    <link rel="stylesheet" href=" css/common.css"/>
+    <link rel="stylesheet" href=" css/web.css"/>
+    <link rel="stylesheet" href=" css/fixed-table.css"/>
+    <script src=" js/jquery-1.9.1.min.js"></script>
+    <script src=" js/fixed-table.js"></script>
+    <script src="js/findUser.js"></script>
+    <script>
+        $(function () {
+
+            var windowH = $(window).height();
+            var tableH = $('.fixed-table_body-wraper');
+            tableH.height(windowH - 247);
+
+            var tableW = $('.table_wrapper').width();
+            $('.fixed-table_header,.fixed-table_body').width(tableW);
+
+            var windowW = $(window).width();
+            // $('.right_area').width(windowW-170);
+            // var windowH=$(window).height();
+            $('.left_area,.right_area').height(windowH);
+
+            $('.left_area li').click(function () {
+                $(this).addClass('cur').siblings().removeClass('cur');
+            });
+            $('.select_pages').click(function () {
+                $(this).find('.open_page').toggle();
+            });
+            $('.add_puponp').click(function () {
+                $('.popup_bg,.popup_content').show();
+            });
+            $('.popup_content .close_icon').click(function () {
+                $('.popup_bg,.popup_content').hide();
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="left_area">
+    <h1><img src=" img/logo.png" alt=""></h1>
+    <div class="user_info">
+        <div class="user_images">
+            <img src=" img/user.png" alt="">
+        </div>
+        <p id="nameH">
+        </p>
+    </div>
+    <ul>
+        <li>
+            <a href="index.html"><i class="icons home_icon"></i>工作行程</a>
+        </li>
+        <li>
+            <a href="car.html"><i class="icons user_icon"></i>车库中心</a>
+        </li>
+        <li>
+            <a href="evaluation.html"><i class="icons yg_icon"></i>估价中心</a>
+        </li>
+        <li>
+            <a href="tinsurance.html"><i class="icons zz_icon"></i>保险业务</a>
+        </li>
+        <li>
+            <a href="tmaintain.html"><i class="icons sh_icon"></i>保养业务</a>
+        </li>
+        <li class="cur">
+            <a href="user.html"><i class="icons xg_icon"></i>个人信息</a>
+        </li>
+        <li>
+            <a href="javascript:;" id="written"><i class="icons xg_icon"></i>注销</a>
+        </li>
+    </ul>
+</div>
+<div class="innerPage  ">
+
+    <div class="function_bar clearfix">
+        <div class="btns">
+            <a href="uPpassword.html" class="add_puponp2">修改密码</a>
+        </div>
+        <div class="btns">
+            <a href="javascript:;" class="add_puponp">修改个人信息</a>
+        </div>
+
+    </div>
+    <div class="fixed-table-box row-col-fixed" align="center">
+        <table class="fixed-table_body" border="0" width="20%" id="User">
+            <tr id="username">
+                <td width="5%">账号</td>
+            </tr>
+            <tr id="name">
+                <td width="5%">昵称</td>
+            </tr>
+            <tr id="companyName">
+                <td width="5%">公司</td>
+            </tr>
+            <tr id="phone">
+                <td width="5%">电话</td>
+            </tr>
+            <tr id="email">
+                <td width="5%">邮箱</td>
+            </tr>
+        </table>
+    </div>
+
+    <!--弹窗-->
+    <div class="popup_bg none" id="windowAdd"></div>
+    <div class="popup_content none" id="windowTwo">
+        <div class="popup_header">
+            <h3>修改个人信息</h3>
+            <i class="icons close_icon"></i>
+        </div>
+        <div class="popup_cons">
+            <ul>
+                <li id="nameP">
+                    <p>昵称</p>
+                    <!--<div class="input_box"><input type="text" value="111"></div>-->
+                </li>
+                <li id="companyNameP">
+                    <p>公司</p>
+                    <!--<div class="input_box"><input type="text" value="111"></div>-->
+                </li>
+                <li id="phoneP">
+                    <p>电话</p>
+                    <!--<div class="input_box"><input type="text" value="111"></div>-->
+                </li>
+                <li id="emailP">
+                    <p>邮箱</p>
+                    <!--<div class="input_box"><input type="text" value="111"></div>-->
+                </li>
+            </ul>
+        </div>
+        <div class="pupup_footer">
+            <a href="javascript:;" class="btn" id="upUser">修改</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    //初始化FixedTable
+    $(".fixed-table-box").fixedTable();
+</script>
+</body>
+
+<!--更新用户信息js-->
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#upUser').click(function () {
+
+
+            var name = $('#pa').val();
+            var companyName = $('#pb').val();
+            var phone = $('#pc').val();
+            var email = $('#pd').val();
+
+            $.ajax({
+                type: 'POST',
+                data: {
+                    name: name, companyName:companyName, phone:phone, email:email
+                },
+                dataType: 'json',
+                url: '/khusedcar/user/upUser',
+                success: function (result) {
+                    if (result.code == '0000') {
+                        alert("修改成功");
+                        $('#windowAdd').hide();
+                        $('#windowTwo').hide();
+                    } else if (result.code != '0000') {
+                        alert("您填写的信息有误,请检查后再提交");
+                    }
+                },
+                error: function (result) {
+                    alert("操作失败");
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#written').click(function () {
+            $.ajax({
+                type: 'GET',
+                data: null,
+                dataType: 'json',
+                url: '/khusedcar/user/written',
+                success: function (result) {
+                    if (result.code == '0000') {
+                        alert("注销成功！");
+                        window.location.href = "login.html";
+                    } else if (result.code != '0000') {
+                        alert("注销失败");
+                    }
+                },
+                error: function (result) {
+                    alert("操作失败");
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+</html>

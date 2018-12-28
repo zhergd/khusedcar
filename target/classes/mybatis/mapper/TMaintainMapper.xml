@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.khusedcar.administrators.mapper.TMaintainMapper" >
+
+    <insert id="newTMaintain">
+        insert into t_maintain(name,company_name , price, phone, address, descr)
+        values (#{name},#{companyName},#{price},#{phone},#{address},#{descr})
+    </insert>
+
+    <select id="findAllTMaintain" resultType="com.khusedcar.administrators.entities.TMaintain">
+        select * from t_maintain
+        where status = 0
+    </select>
+
+    <select id="findTMaintain" resultType="com.khusedcar.administrators.entities.TMaintain">
+        select * from t_maintain
+        where status = 0
+        AND name like CONCAT(CONCAT('%',#{name},'%'))
+    </select>
+
+    <select id="getRecord" resultType="com.khusedcar.utils.reqdto.admin.TMaintainRecordDTO">
+       select * from t_maintain
+      where status = 1
+      ORDER BY updata_time desc
+    </select>
+
+    <update id="recoveryTMaintain">
+        update t_maintain set status = 0
+        where id = #{id}
+    </update>
+
+    <update id="deleteTMaintain">
+        update t_maintain set status = 1
+        where id = #{id}
+    </update>
+
+
+
+
+
+
+</mapper>

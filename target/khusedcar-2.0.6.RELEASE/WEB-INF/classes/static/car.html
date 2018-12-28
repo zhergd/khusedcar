@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>科汇二手车中介管理系统</title>
+    <link rel="stylesheet" href=" css/common.css"/>
+    <link rel="stylesheet" href=" css/web.css"/>
+    <link rel="stylesheet" href=" css/fixed-table.css"/>
+    <script src=" js/jquery-1.9.1.min.js"></script>
+    <script src=" js/fixed-table.js"></script>
+    <script src="js/findUser.js"></script>
+
+    <script>
+        $(function () {
+
+            var windowH = $(window).height();
+            var tableH = $('.fixed-table_body-wraper');
+            tableH.height(windowH - 247);
+
+            var tableW = $('.table_wrapper').width();
+            $('.fixed-table_header,.fixed-table_body').width(tableW);
+
+            var windowW = $(window).width();
+            // $('.right_area').width(windowW-170);
+            // var windowH=$(window).height();
+            $('.left_area,.right_area').height(windowH);
+
+            $('.left_area li').click(function () {
+                $(this).addClass('cur').siblings().removeClass('cur');
+            });
+            $('.select_pages').click(function () {
+                $(this).find('.open_page').toggle();
+            });
+            $('.add_puponp').click(function () {
+                $('.popup_bg,.popup_content').show();
+            });
+            $('.popup_content .close_icon').click(function () {
+                $('.popup_bg,.popup_content').hide();
+            });
+            // $('.p_puponp').click(function () {
+            //     $('.popup_bg,.popup_content').show();
+            // });
+            // $('tbody').on('click','.p_puponp',function () {
+            //     $('.pptw_bg,.pptw_content').show();
+            // });
+            // $('.pptw_content .close_icon').click(function () {
+            //     $('.pptw_bg,.pptw_content').hide();
+            // });
+
+        });
+    </script>
+</head>
+<body>
+<div class="left_area">
+    <h1><img src=" img/logo.png" alt=""></h1>
+    <div class="user_info">
+        <div class="user_images">
+            <img src=" img/user.png" alt="">
+        </div>
+        <p id="nameH"></p>
+    </div>
+    <ul>
+        <li><a href="index.html"><i class="icons home_icon"></i>工作行程</a></li>
+        <li class="cur"><a href="car.html"><i class="icons user_icon"></i>车库中心</a></li>
+        <li><a href="evaluation.html"><i class="icons yg_icon"></i>估价中心</a></li>
+        <li><a href="tinsurance.html"><i class="icons zz_icon"></i>保险业务</a></li>
+        <li><a href="tmaintain.html"><i class="icons sh_icon"></i>保养业务</a></li>
+        <li><a href="user.html"><i class="icons xg_icon"></i>个人信息</a></li>
+        <li><a href="javascript:;" id="written"><i class="icons xg_icon"></i>注销</a></li>
+    </ul>
+</div>
+<div class="innerPage tag_innerPage">
+    <div class="tag_content">
+
+        <a href="car.html" class="cur">车库中心</a>
+
+        <a href="mCar.html">我的车源</a>
+
+    </div>
+    <div class="function_bar clearfix">
+        <div class="search_box">
+            <div class="cons"><i class="icons search_icon"></i><input class="input_text" id="ttt" placeholder="输入关键字"/>
+            </div>
+        </div>
+        <div class="select_box">
+            <a href="#" class="box" id="find"><i class="icons right_icon"></i>搜索</a>
+        </div>
+        <div class="btns">
+            <a href="javascript:;" class="add_puponp">上传车辆</a>
+        </div>
+    </div>
+    <div class="table_wrapper">
+        <div class="fixed-table-box row-col-fixed">
+            <!-- 表头 start -->
+            <div class="fixed-table_header-wraper">
+                <table class="fixed-table_header" cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th width="35%">
+                            <div class="table-cell">车辆名称</div>
+                        </th>
+                        <th width="15%">
+                            <div class="table-cell">所属业务员</div>
+                        </th>
+                        <th width="20%">
+                            <div class="table-cell">业务员电话</div>
+                        </th>
+                        <th width="10%">
+                            <div class="table-cell">卖车意向</div>
+                        </th>
+                        <th width="10%">
+                            <div class="table-cell">价钱</div>
+                        </th>
+                        <th width="10%" data-fixed="true" data-direction="right">
+                            <div class="table-cell">操作</div>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- 表头 end -->
+            <!-- 表格内容 start -->
+            <div class="fixed-table_body-wraper">
+                <table class="fixed-table_body" cellspacing="0" cellpadding="0" border="0" width="100%" id="Car">
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 表格内容 end -->
+        </div>
+        <!--分页-->
+        <div class="page_cons">
+            <div class="cons">
+                <ul>
+                    <li>
+                        共400条
+                        <div class="select_pages">
+                            <a href="javascript:;">100条/页<i class="icons down_icon"></i></a>
+                            <div class="open_page">
+                                <a href="javascript:;">200条/条</a>
+                                <a href="javascript:;">300条/条</a>
+                                <a href="javascript:;">400条/条</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box">
+                            <a href="javascript:;"><i class="icons left_icon"></i></a>
+                            <a href="javascript:;" class="cur a1">1</a>
+                            <a href="javascript:;" class="a1">2</a>
+                            <a href="javascript:;" class="a1">3</a>
+                            <a href="javascript:;" class="a1">4</a>
+                            <a href="javascript:;"><i class="icons right_icon"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="go">
+                            前往<input type="text">页
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹窗-->
+<div class="popup_bg none" id="windowAdd"></div>
+<div class="popup_content none" id="windowTwo">
+    <div class="popup_header">
+        <h3>新增车辆</h3>
+        <i class="icons close_icon"></i>
+    </div>
+    <div class="popup_cons">
+        <ul>
+            <li>
+                <p>车辆名称</p>
+                <div class="input_box"><input type="text" id="name" name="name" placeholder="请输入车辆名称"></div>
+            </li>
+            <li>
+                <p>车主</p>
+                <div class="input_box"><input type="text" id="owner" name="owner" placeholder="请输入车主"></div>
+            </li>
+            <li>
+                <p>车主电话</p>
+                <div class="input_box"><input type="text" id="ownerPhone" name="=ownerPhone" placeholder="请输入车主电话"></div>
+            </li>
+            <li>
+                <p>地址</p>
+                <div class="input_box"><input type="text" id="address" name="address"placeholder="请输入地址"></div>
+            </li>
+            <li>
+                <p>车牌号码</p>
+                <div class="input_box"><input type="text" id="carNum" name="carNum" placeholder="请输入车牌"></div>
+            </li>
+            <li>
+                <p>汽车品牌</p>
+                <div class="input_box"><input type="text" id="brand" name="brand" placeholder="请输入品牌"></div>
+            </li>
+            <li>
+                <p>价格</p>
+                <div class="input_box"><input type="text" id="price" name="price" placeholder="请输入价格"></div>
+            </li>
+            <li>
+                <p>车龄</p>
+                <div class="input_box"><input type="text" id="carAge" name="carAge" placeholder="请输入车龄"></div>
+            </li>
+            <li>
+                <p>里程</p>
+                <div class="input_box"><input type="text" id="mileage" name="mileage" placeholder="请输入里程"></div>
+            </li>
+            <li>
+                <p>颜色</p>
+                <div class="input_box"><input type="text" id="colour" name="colour" placeholder="请输入颜色"></div>
+            </li>
+            <li>
+                <p>燃料类型</p>
+                <div class="input_box selext_box">
+                    <select id="fuelType" name="fuelType">
+                        <option value="汽油">汽油</option>
+                        <option value="柴油">柴油</option>
+                        <option value="电能">电能</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <p>销售类型</p>
+                <div class="input_box selext_box">
+                    <select id="saleType" name="saleType">
+                        <option value="代售">代售</option>
+                        <option value="已收购">已收购</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <p>卖车意向</p>
+                <div class="input_box selext_box">
+                    <select name="intention" id="intention">
+                        <option value="正常">正常</option>
+                        <option value="急售">急售</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <p>备注</p>
+                <div class="input_box"><input type="text" id="remarks" name="remarks" placeholder=""></div>
+            </li>
+            <li>
+                图片:<input type="file" id="imgT" name="file"/>
+            </li>
+        </ul>
+    </div>
+    <div class="pupup_footer"><a href="#" class="btn" id="addCar">新增</a></div>
+</div>
+
+<!--弹窗2-->
+<div class="pptw_bg none" id="windowAdd2"></div>
+<div class="pptw_content none" id="windowTwo2">
+    <div class="pptw_header">
+        <h3>车辆详情</h3>
+        <i class="icons close_icon"></i>
+    </div>
+    <div class="pptw_cons">
+            <table class="fixed-table_body" border="0" width="20%" id="User">
+                <tr id="p_name">
+                    <td width="5%">车辆名称：</td>
+                </tr>
+                <tr id="p_brand">
+                    <td width="5%">品牌：</td>
+                </tr>
+                <tr id="p_carAge">
+                    <td width="5%">车龄：</td>
+                </tr>
+                <tr id="p_mileage">
+                    <td width="5%">里程：</td>
+                </tr>
+                <tr id="p_colour">
+                    <td width="5%">颜色：</td>
+                </tr>
+                <tr id="p_fuelType">
+                    <td width="5%">燃料类型：</td>
+                </tr>
+                <tr id="p_carNum">
+                    <td width="5%">车牌号码：</td>
+                </tr>
+                <tr id="p_saleType">
+                    <td width="5%">销售类型：</td>
+                </tr>
+                <tr id="p_intention">
+                    <td width="5%">卖车意向：</td>
+                </tr>
+                <tr id="p_companyName">
+                    <td width="5%">所属公司：</td>
+                </tr>
+                <tr id="p_salesmanName">
+                    <td width="5%">所属业务员：</td>
+                </tr>
+                <tr id="p_salesmanPhone">
+                    <td width="5%">联系方式：</td>
+                </tr>
+                <tr id="p_address">
+                    <td width="5%">地址：</td>
+                </tr>
+                <tr id="p_remarks">
+                    <td width="5%">备注：</td>
+                </tr>
+            </table>
+    </div>
+</div>
+<script>
+    //初始化FixedTable
+    $(".fixed-table-box").fixedTable();
+</script>
+</body>
+
+<!--新增车辆js-->
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#addCar').click(function () {
+
+            var name = $('#name').val();
+            var owner = $('#owner').val();
+            var ownerPhone = $('#ownerPhone').val();
+            var address = $('#address').val();
+            var carNum = $('#carNum').val();
+            var brand = $('#brand').val();
+            var price = $('#price').val();
+            var carAge = $('#carAge').val();
+            var mileage = $('#mileage').val();
+            var colour = $('#colour').val();
+            var fuelType = $('#fuelType').val();
+            var saleType = $('#saleType').val();
+            var intention = $('#intention').val();
+            var remarks = $('#remarks').val();
+            var imgT = $("#imgT").get(0).files[0];
+            var q = new FormData();
+            /*formData.append("name",name);
+            formData.append("owner",owner);
+            formData.append("ownerPhone",ownerPhone);
+            formData.append("address",address);
+            formData.append("carNum",carNum);
+            formData.append("brand",brand);
+            formData.append("price",price);
+            formData.append("carAge",carAge);
+            formData.append("mileage",mileage);
+            formData.append("colour",colour);
+            formData.append("fuelType",fuelType);
+            formData.append("saleType",saleType);
+            formData.append("intention",intention);
+            formData.append("remarks",remarks);*/
+            //formData.append("file",imgT);
+            q.append("name","123");
+            console.info(q)
+
+            $.ajax({
+                type: 'POST',
+                data: q,
+                processData : false,
+                dataType: 'json',
+                url: '/khusedcar/car/addCar',
+                contentType:  "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (result) {
+                    if (result.code == '0000') {
+                        alert("新增成功！");
+                        $('#windowAdd').hide();
+                        $('#windowTwo').hide();
+                    } else if (result.code != '0000') {
+                        alert("您填写的车辆信息有误,请检查后再提交");
+                    }
+                },
+                error: function (result) {
+                    alert("您填写的信息有误,请检查后再提交");
+                }
+            });
+        });
+    });
+</script>
+
+
+<!--查找所有车辆js-->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $.ajax({
+            url: '/khusedcar/car/findAllCar',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                //方法中传入的参数data为后台获取的数据
+                for (i in data.data.list) //data.data指的是数组，i为数组的索引
+                {
+                    var tr;
+                    tr = '<td width="35%">' + '<div class="table-cell">' + data.data.list[i].name + '</td>' + '</div>'
+                        + '<td width="15%">' + '<div class="table-cell">' + data.data.list[i].salesmanName + '</td>' + '</div>'
+                        + '<td width="20%">' + '<div class="table-cell">' + data.data.list[i].salesmanPhone + '</td>' + '</div>'
+                        + '<td width="10%">' + '<div class="table-cell">' + data.data.list[i].intention + '</td>' + '</div>'
+                        + '<td width="10%">' + '<div class="table-cell">' + data.data.list[i].price + '元' + '</td>' + '</div>'
+                        + '<td width="10%">' + '<div class="table-cell">' + '<a href="javascript:;" class="p_puponp">详情</a>' + '</td>' + '</div>';
+                    $("#Car").append('<tr>' + tr + '</tr>');
+                }
+            }
+        })
+    })
+</script>
+
+<!--查询车辆js-->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#find").click(function () {
+            $("#Car").empty();
+
+
+            var name = $('#ttt').val();
+
+            $.ajax({
+                url: '/khusedcar/car/findCar',
+                type: 'GET',
+                data: {
+                    name: name
+                },
+                dataType: 'json',
+                success: function (data) {
+                    //方法中传入的参数data为后台获取的数据
+                    for (i in data.data) //data.data指的是数组，数组里是8个对象，i为数组的索引
+                    {
+                        var tr;
+                        tr = '<td width="35%">' + '<div class="table-cell">' + data.data[i].name + '</td>' + '</div>'
+                            + '<td width="15%">' + '<div class="table-cell">' + data.data[i].salesmanName + '</td>' + '</div>'
+                            + '<td width="20%">' + '<div class="table-cell">' + data.data[i].salesmanPhone + '</td>' + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].intention + '</td>' + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + data.data[i].price + '</td>' + '</div>'
+                            + '<td width="10%">' + '<div class="table-cell">' + '<a href="###">详情</a>' + '</td>' + '</div>';
+                        $("#Car").append('<tr>' + tr + '</tr>');
+                    }
+                }
+
+            });
+        });
+    });
+</script>
+
+<!--注销js-->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.4.0/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#written').click(function () {
+            $.ajax({
+                type: 'GET',
+                data: null,
+                dataType: 'json',
+                url: '/khusedcar/user/written',
+                success: function (result) {
+                    if (result.code == '0000') {
+                        alert("注销成功！");
+                        window.location.href = "login.html";
+                    } else if (result.code != '0000') {
+                        alert("注销失败");
+                    }
+                },
+                error: function (result) {
+                    alert("操作失败");
+                }
+            });
+        });
+    });
+
+
+</script>
+
+</html>

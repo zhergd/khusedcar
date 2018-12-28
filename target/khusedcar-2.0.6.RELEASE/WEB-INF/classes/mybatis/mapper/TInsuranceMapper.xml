@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.khusedcar.administrators.mapper.TInsuranceMapper" >
+    <insert id="newTInsurance">
+        insert into t_insurance (name,price,descr,phone,agent)
+        values (#{name},#{price},#{descr},#{phone},#{agent})
+    </insert>
+
+    <select id="findAllTInsurance" resultType="com.khusedcar.administrators.entities.TInsurance">
+        select * from t_insurance
+        where status = 0
+    </select>
+
+
+    <select id="findTInsurance" resultType="com.khusedcar.administrators.entities.TInsurance">
+        select * from t_insurance
+        where status = 0
+        AND  name like CONCAT(CONCAT('%',#{name},'%'))
+    </select>
+
+    <select id="findRecord" resultType="com.khusedcar.utils.reqdto.admin.TInsuranceRecordDTO">
+        select * from t_insurance
+        where status = 1
+        ORDER BY updata_time desc
+    </select>
+    
+    <update id="recoveryTInsurance">
+        update t_insurance set status = 0
+        where id = #{id}
+    </update>
+
+    <update id="deleteTInsurance">
+        update t_insurance set status = 1
+        where id = #{id}
+    </update>
+
+
+
+
+</mapper>

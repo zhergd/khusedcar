@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: kuusedcar
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: zuhao
+Implementation-Vendor-Id: com.kuusedcar
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_171
+Main-Class: ${start-class}
+

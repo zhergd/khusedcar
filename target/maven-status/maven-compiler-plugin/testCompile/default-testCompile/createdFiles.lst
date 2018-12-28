@@ -1,0 +1,5 @@
+com\khusedcar\administrators\controller\AdminControllerTest.class
+com\khusedcar\user\controller\UserControllerTest.class
+com\khusedcar\car\controller\TCarControllerTest.class
+com\khusedcar\KhusedcarApplicationTests.class
+com\khusedcar\schedule\controller\TScheduleControllerTest.class

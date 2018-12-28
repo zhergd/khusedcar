@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>离职管理</title>
+    <link rel="stylesheet" href=" css/common.css" />
+    <link rel="stylesheet" href=" css/web.css" />
+    <link rel="stylesheet" href=" css/fixed-table.css" />
+    <script src=" js/jquery-1.9.1.min.js"></script>
+    <script src=" js/fixed-table.js"></script>
+    <script>
+        $(function(){
+           
+            var windowH=$(window).height();
+            var tableH=$('.fixed-table_body-wraper');
+            tableH.height(windowH-287);
+
+            var tableW=$('.table_wrapper').width();
+            $('.fixed-table_header,.fixed-table_body').width(tableW);
+
+            var windowW=$(window).width();
+            // $('.right_area').width(windowW-170);
+            // var windowH=$(window).height();
+            $('.left_area,.right_area').height(windowH);
+
+            $('.left_area li').click(function(){
+                $(this).addClass('cur').siblings( ).removeClass('cur');
+            });
+            $('.select_pages').click(function(){
+                $(this).find('.open_page').toggle();
+            });
+            $('.select_box').click(function(){
+                $(this).find('.open_cons').toggle();
+            });
+            $('.add_puponp').click(function(){
+                $('.popup_bg,.popup_content').show();
+            });
+            $('.popup_content .close_icon').click(function(){
+                $('.popup_bg,.popup_content').hide();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="left_area">
+        <h1><img src="  img/logo.png" alt=""></h1>
+        <div class="user_info">
+            <div class="user_ img">
+                <img src="  img/user.png" alt="">
+            </div>
+            <p>黄吉如<a href="javascript:;"><i class="icons exit_icon"></i></a></p>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="icons home_icon"></i>工作台</a></li>
+            <li><a href="javascript:;"><i class="icons user_icon"></i>客户管理</a></li>
+            <li class="cur"><a href="evaluation.html"><i class="icons yg_icon"></i>员工管理</a></li>
+            <li><a href="tinsurance.html"><i class="icons zz_icon"></i>组织管理</a></li>
+            <li><a href="tmaintain.html"><i class="icons sh_icon"></i>社会公积金</a></li>
+            <li><a href="javascript:;"><i class="icons xg_icon"></i>信息管理</a></li>
+        </ul>
+    </div>
+    <div class="innerPage tag_innerPage">
+        <div class="tag_content">
+            
+                    <a href="evaluation.html">员工管理</a>
+               
+                    <a href="contract.html">合同管理</a>
+              
+                    <a href="leave.html"  class="cur">离职管理</a>
+               
+        </div>
+        <div class="function_bar clearfix">
+            <div class="search_box">
+                <div class="cons"><i class="icons search_icon"></i><input class="input_text" /></div>
+            </div>
+            <div class="select_box">
+                <a href="javascript:;" class="box"><i class="icons right_icon"></i>待离职</a>
+                <div class="open_cons">
+                    <a href="javascript:;" class="cur">
+                        待离职
+                    </a>
+                    <a href="javascript:;">
+                        未离职
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="btns">
+                <a href="javascript:;" class="add_puponp">办理离职</a>
+            </div>
+        </div>
+        <div class="table_wrapper">
+            <div class="fixed-table-box row-col-fixed">
+                <!-- 表头 start -->
+                <div class="fixed-table_header-wraper">
+                    <table class="fixed-table_header" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="5%" data-fixed="true"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></th>
+                                <th width="35%"><div class="table-cell">企业名称</div></th>
+                                <th width="15%"><div class="table-cell">联系人姓名</div></th>
+                                <th width="15%"><div class="table-cell">联系人电话</div></th>
+                                <th width="10%"><div class="table-cell">合同期限</div></th>
+                                <th width="10%"><div class="table-cell">员工人数</div></th>
+                                <th width="10%" data-fixed="true" data-direction="right"><div class="table-cell">操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- 表头 end -->
+                <!-- 表格内容 start -->
+                <div class="fixed-table_body-wraper">
+                    <table class="fixed-table_body" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                            <tr>
+                                <td width="5%"><div class="table-cell tdCheckBox"><input type="checkbox" class="tdCheck"><label for="tdCheck"></label></div></td>
+                                <td width="35%"><div class="table-cell">广东移动信息技术有限公司</div></td>
+                                <td width="15%"><div class="table-cell">王小虎</div></td>
+
+                                <td width="15%"><div class="table-cell">1300000001</div></td>
+                                <td width="10%"><div class="table-cell">2年</div></td>
+                                <td width="10%"><div class="table-cell">50</div></td>
+                                <td width="10%"><div class="table-cell"><a href="###">删除</a></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 表格内容 end -->
+
+            </div>
+            <!--分页-->
+            <div class="page_cons">
+                <div class="total">
+                    总员工：243人&nbsp;&nbsp;试用期：13人&nbsp;&nbsp;正式员工：200人&nbsp;&nbsp;未签员工：30人
+                </div>
+                <div class="cons">
+                    <ul>
+                        <li>
+                            共400条
+                            <div class="select_pages">
+                                <a href="javascript:;">100条/页<i class="icons down_icon"></i></a>
+                                <div class="open_page">
+                                    <a href="javascript:;">200条/条</a>
+                                    <a href="javascript:;">300条/条</a>
+                                    <a href="javascript:;">400条/条</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box">
+                                <a href="javascript:;"><i class="icons left_icon"></i></a>
+                                <a href="javascript:;" class="cur a1">1</a>
+                                <a href="javascript:;" class="a1">2</a>
+                                <a href="javascript:;" class="a1">3</a>
+                                <a href="javascript:;" class="a1">4</a>
+                                <a href="javascript:;"><i class="icons right_icon"></i></a>
+                            </div>
+                        </li>
+                        <li>
+                           <div class="go">
+                                前往<input type="text" value="4">页
+                            </div>  
+                        </li>
+                    </ul>     
+                </div>
+            </div>
+        </div>     
+    </div>
+    <!--弹窗-->
+    <div class="popup_bg none"></div>
+    <div class="popup_content none">
+        <div class="popup_header">
+            <h3>入职员工</h3>
+            <i class="icons close_icon"></i>
+        </div>
+        <div class="popup_cons">
+            <ul>
+                <li>
+                    <p>姓名</p>
+                    <div class="input_box"><input type="text" placeholder="请输入姓名"></div>
+                </li>
+                <li>
+                    <p>性别</p>
+                    <div class="input_box">
+                        <input type="radio" name="radio" value="1" class="radio_text" checked><label for="">男</label>
+
+                        <input type="radio" name="radio" value="2" class="radio_text radio_text2"><label for="">女</label>
+                    </div>
+                </li>
+                <li>
+                    <p>手机号码</p>
+                    <div class="input_box"><input type="text" placeholder="请输入手机号码"></div>
+                </li>
+                <li>
+                    <p>个人邮箱</p>
+                    <div class="input_box"><input type="text" placeholder="请输入个人邮箱"></div>
+                </li>
+                <li>
+                    <p>入职日期</p>
+                    <div class="input_box"><input type="text" placeholder="请输入日期"><i class="icons date_icon"></i></div>
+                </li>
+                <li>
+                    <p>工作性质</p>
+                    <div class="input_box selext_box">
+                        <select name="">
+                            <option value="请选择">请选择</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <p>销售部门</p>
+                    <div class="input_box">
+                        <select name="">
+                            <option value="请选择">请选择</option>
+                        </select>  
+                    </div>
+                </li>
+                <li>
+                    <p>岗位</p>
+                    <div class="input_box selext_box">
+                        <select name="">
+                            <option value="请选择">请选择</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <p>入职登记表</p>
+                    <div class="input_box">
+                        <img src="  img/erweima.png" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="pupup_footer"><a href="javascript:;" class="btn">保存</a></div>
+    </div>
+    <script>
+        //初始化FixedTable
+        $(".fixed-table-box").fixedTable();
+    </script>
+</body>
+</html>
